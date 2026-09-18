@@ -1,0 +1,47 @@
+# ===== Unity 资源文件：交给 UnityYAMLMerge 处理合并 =====
+# 启用智能合并需要在每台机器上一次性配置（路径按你本机的 Unity 安装位置改）：
+#   git config merge.unityyamlmerge.name "Unity SmartMerge"
+#   git config merge.unityyamlmerge.driver "C:/Program Files/Unity/Hub/Editor/2022.3.62f3c1/Editor/Data/Tools/UnityYAMLMerge merge -p %O %B %A %A"
+# 没配置也不会报错，只是回退到普通文本合并。
+
+*.unity        text merge=unityyamlmerge eol=lf
+*.prefab       text merge=unityyamlmerge eol=lf
+*.asset        text merge=unityyamlmerge eol=lf
+*.meta         text merge=unityyamlmerge eol=lf
+*.controller   text merge=unityyamlmerge eol=lf
+*.anim         text merge=unityyamlmerge eol=lf
+*.overrideController text merge=unityyamlmerge eol=lf
+
+# ===== 源代码与文本：统一 LF =====
+*.cs     text diff=csharp eol=lf
+*.shader text eol=lf
+*.hlsl   text eol=lf
+*.cginc  text eol=lf
+*.json   text eol=lf
+*.md     text eol=lf
+*.yml    text eol=lf
+*.yaml   text eol=lf
+*.txt    text eol=lf
+
+# ===== 二进制资源：不做行尾转换 =====
+*.png   binary
+*.jpg   binary
+*.jpeg  binary
+*.psd   binary
+*.tga   binary
+*.fbx   binary
+*.blend binary
+*.wav   binary
+*.mp3   binary
+*.ogg   binary
+*.ttf   binary
+*.otf   binary
+*.dll   binary
+*.so    binary
+*.a     binary
+*.dylib binary
+
+# ===== Git LFS（可选，体积大了再开）=====
+# 大二进制文件超过 10MB 时建议启用，参考 .gitattributes 官方 LFS 写法：
+# *.psd filter=lfs diff=lfs merge=lfs -text
+# *.blend filter=lfs diff=lfs merge=lfs -text
